@@ -1,2 +1,3 @@
 # pyqt-qpropertyanimation
-Sources from PyQt QPropertyAnimation
+Sources from QPropertyAnimation in PyQt
+http://zetcode.com/pyqt/qpropertyanimation/
