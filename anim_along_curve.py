@@ -16,7 +16,6 @@ from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 from PyQt5.QtGui import QPainter, QPixmap, QPainterPath
 from PyQt5.QtCore import QObject, QPointF, QPropertyAnimation, pyqtProperty
 import sys
-
                               
 class Ball(QLabel):
     
@@ -41,25 +40,11 @@ class Example(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.initUI()
+        self.initView()
         self.initAnimation()
         
         
-    def paintEvent(self, e):    
-        
-        qp = QPainter()
-        qp.begin(self)
-        qp.setRenderHint(QPainter.Antialiasing)   
-        self.drawPath(qp)
-        qp.end()       
-        
-        
-    def drawPath(self, qp):
-              
-        qp.drawPath(self.path)        
-        
-        
-    def initUI(self):    
+    def initView(self):    
         
         self.path = QPainterPath()
         self.path.moveTo(30, 30)
@@ -72,7 +57,16 @@ class Example(QWidget):
         self.setWindowTitle("Animation along curve")
         self.setGeometry(300, 300, 400, 300)
         self.show()
+
+
+    def paintEvent(self, e):    
         
+        qp = QPainter()
+        qp.begin(self)
+        qp.setRenderHint(QPainter.Antialiasing)   
+        qp.drawPath(self.path)
+        qp.end()  
+
         
     def initAnimation(self):
         
